@@ -9,22 +9,45 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <div class="m-0 h-screen w-screen flex items-center justify-center overflow-hidden">
-        <div class="m-0 h-1/2 w-1/2 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg animate__animated animate__fadeInUp">
+    <script>
+        function p1Button(elm) {
+            p1Progress++;
+            elm.classList.remove("bg-gray-100", "hover:bg-gray-300");
+            elm.classList.add("bg-indigo-100");
+            document.getElementById("p1-progress-bar").style.width = `${p1Progress / 3 * 100}%`;
+            elm.disabled = true;
+            if(p1Progress >= 3) {
+                const nextButton = document.getElementById("next");
+                nextButton.disabled = false;
+                nextButton.classList.remove("bg-indigo-100");
+                nextButton.classList.add("bg-indigo-800");
+            }
+        }
+        </script>
+    <div class="m-0 h-screen w-screen flex items-center justify-center overflow-hidden flex-col">
+        <div class="mb-7 h-1/2 w-1/2 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg animate__animated animate__fadeInUp">
             <div class="w-full h-full grid grid-cols-3 grid-rows-3 gap-4 place-items-center text-center">
                 <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">1</a>
                 <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">2</a>
-                <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">3</a>
+                <button onclick="p1Button(this);" class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">3</button>
                 <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">4</a>
-                <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">5</a>
+                <button onclick="p1Button(this);" class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">5</button>
                 <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">6</a>
-                <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">7</a>
+                <button onclick="p1Button(this);" class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">7</button>
                 <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">8</a>
                 <a class="bg-gray-100 w-full h-full shadow-lg rounded-lg flex items-center justify-center hover:bg-gray-300">9</a>
             </div>
         </div>
+        <div class="w-1/3 animate__animated flex flex-col justify-center items-center animate__delay-1s animate__fadeInUp">
+            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mb-3">
+                <div id="p1-progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0;"></div>
+            </div>
+            <button onclick="nextPage()" id="next" disabled href="" class="mb-3 bg-indigo-100 text-white p-2 rounded-lg">Next</button>
+            <a href="index.html" class="text-gray-500 hover:text-gray-300">back</a>
+        </div>
     </div>
     <script>
+        let p1Progress = 0;
         document.querySelectorAll("a").forEach(link => {
             link.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -35,6 +58,12 @@
                 }, 1000);
             });
         });
-    </script>
+        function nextPage() {
+            document.body.classList.add("animate__animated", "animate__fadeOut");
+            setTimeout(() => {
+                window.location.href = "Rkpycux8vw.html";
+            }, 1000);
+        }
+        </script>
 </body>
 </html>

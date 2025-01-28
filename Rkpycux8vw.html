@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="h-screen w-screen flex items-center justify-center overflow-hidden">
+        <div class="w-1/2 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg animate__animated animate__fadeInUp">
+            <h1 class="text-xl text-gray-850 hover:text-gray-500">Page2</h1>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const href = this.href;
+                document.body.classList.add("animate__animated", "animate__fadeOut");
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
