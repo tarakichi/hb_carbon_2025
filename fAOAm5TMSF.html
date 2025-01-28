@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-gray-900">
+    <style>
+        .hidden-on-load {
+            opacity: 0;
+        }
+    </style>
+    <div id="clear" class="pt-32 flex items-center justify-center overflow-hidden flex-col animate__animated animate__slow animate__fadeIn">
+        <h1 class="font-bold mb-16 text-5xl text-white hover:text-gray-500">Clear</h1>
+        <div class="hidden-on-load my-64 w-1/2 bg-gray-800 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg">
+            <p class="my-24 text-3xl font-bold text-sm text-white hover:text-gray-500">🎉🎊誕生日おめでとう🎊🎉</p>
+        </div>
+        <div class="hidden-on-load mb-96 mt-32 w-1/2 bg-gray-800 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg">
+            <p class="my-24 text-sm text-white hover:text-gray-500">お祝いのメッセージです</p>
+            <p class="mb-3 text-sm text-white hover:text-gray-500">クナオ</p>
+            <img src="assets/images/kunao_oiwai.png" alt="kunao" class="mb-24">
+            <p class="mb-3 text-sm text-white hover:text-gray-500">mp</p>
+            <img src="assets/images/mp_oiwai.png" alt="kunao" class="mb-5">
+            <audio controls src="" class="mb-24"></audio>
+        </div>
+        <div class="hidden-on-load mb-96 w-1/2 bg-gray-800 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg">
+            <p class="my-6 text-sm text-white hover:text-gray-500">金庫のパスワードは</p>
+            <p class="font-bold mb-6 text-7xl text-white hover:text-gray-500">8 7 3</p>
+            <p class="mb-6 text-sm text-white hover:text-gray-500">です</p>
+        </div>
+        <div class="hidden-on-load my-32 w-1/2 bg-gray-800 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg">
+            <p class="my-6 text-sm font-bold text-xl text-white hover:text-gray-500">受験がんばれ！</p>
+        </div>
+        <div class="hidden-on-load mt-72">
+            <p class="text-white opacity-10">制作:鴨</p>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("beforeunload", () => {
+            window.scrollTo(0, 0); // ページ離脱時にスクロール位置をリセット
+        });
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     window.scrollTo(0, 0);
+        // });
+        // Intersection Observer API を使ってフェードインの監視
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate__animated", "animate__slow", "animate__fadeInLeft"); // フェードインさせる
+                    observer.unobserve(entry.target); // 一度表示したら監視を解除
+                }
+            });
+        });
+
+        // フェードイン対象の要素を取得
+        const hiddenElements = document.querySelectorAll(".hidden-on-load");
+        hiddenElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
