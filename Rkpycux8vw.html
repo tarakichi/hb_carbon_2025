@@ -10,9 +10,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-gray-100">
-    <div class="h-screen w-screen flex items-center justify-center overflow-hidden">
-        <div class="w-1/2 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg animate__animated animate__fadeInUp">
-            <h1 class="text-xl text-gray-850 hover:text-gray-500">Page2</h1>
+    <div class="h-screen w-screen flex items-center justify-center overflow-hidden flex-col">
+        <div class="w-1/2 h-1/2 mb-3 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg animate__animated animate__fadeInUp">
+            <p onclick="message()" class="mb-5 text-xl text-gray-850 hover:text-gray-500">Password</p>
+            <input placeholder="•••••••••" type="text" id="password" class="w-1/3 bg-gray-50 border border-gray-300 text-gray-800 text-sm text-center rounded-lg block p-2.5">
+        </div>
+        <div class="w-1/3 animate__animated flex flex-col justify-center items-center animate__delay-1s animate__fadeInUp">
+            <a href="0uLN4n6xwx.html" class="text-gray-500 hover:text-gray-300">back</a>
         </div>
     </div>
     <script>
@@ -26,6 +30,19 @@
                 }, 1000);
             });
         });
+        function message() {
+            Swal.fire({
+                icon: "warning",
+                html: "<p onclick='message2()' class='text-gray-800 hover:text-gray-500'>なにもないよ</p>",
+            });
+        }
+        function message2() {
+            Swal.fire({
+                icon: "info",
+                title: "パスワードはスタート画面にある",
+                html: "<p onclick='message2()'>G + Jを押してみよう</p>",
+            });
+        }
     </script>
 </body>
 </html>
