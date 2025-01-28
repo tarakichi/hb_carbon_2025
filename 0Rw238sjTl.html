@@ -10,10 +10,107 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-gray-100">
+    <style>
+        .sainome1{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            border: 1px solid gray;
+            background-color: white;
+            background-image: radial-gradient(circle at 50% 50%, red 19%, white 20%);
+        }
+        .sainome2{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            border: 1px solid gray;
+            background-color: white;
+            background-image: 
+            radial-gradient(circle at 75% 25%, black 10%, #00000000 11%),
+            radial-gradient(circle at 25% 75%, black 10%, #00000000 11%);
+        }
+        .sainome3{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            border: 1px solid gray;
+            background-color: white;
+            background-image: 
+            radial-gradient(circle at 75% 25%, black 10%, #00000000 11%),
+            radial-gradient(circle at 50% 50%, black 15%, #00000000 15%),
+            radial-gradient(circle at 25% 75%, black 10%, #00000000 11%);
+        }
+        .sainome4{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            border: 1px solid gray;
+            background-color: white;
+            background-image: 
+            radial-gradient(circle at 25% 25%, black 10%, #00000000 11%),
+            radial-gradient(circle at 75% 25%, black 10%, #00000000 11%),
+            radial-gradient(circle at 25% 75%, black 10%, #00000000 11%),
+            radial-gradient(circle at 75% 75%, black 10%, #00000000 11%);
+        }
+        .sainome5{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            border: 1px solid gray;
+            background-color: white;
+            background-image: 
+            radial-gradient(circle at 25% 25%, black 10%, #00000000 11%),
+            radial-gradient(circle at 75% 25%, black 10%, #00000000 11%),
+            radial-gradient(circle at 25% 75%, black 10%, #00000000 11%),
+            radial-gradient(circle at 75% 75%, black 10%, #00000000 11%),
+            radial-gradient(circle at 50% 50%, black 15%, #00000000 16%);
+        }
+        .sainome6{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            border: 1px solid gray;
+            background-color: white;
+            background-image: 
+            radial-gradient(circle at 25% 25%, black 10%, #00000000 11%),
+            radial-gradient(circle at 25% 50%, black 12%, #00000000 13%),
+            radial-gradient(circle at 25% 75%, black 10%, #00000000 11%),
+            radial-gradient(circle at 75% 25%, black 10%, #00000000 11%),
+            radial-gradient(circle at 75% 50%, black 12%, #00000000 13%),
+            radial-gradient(circle at 75% 75%, black 10%, #00000000 11%);
+        }
+    </style>
     <div class="h-screen w-screen flex items-center justify-center overflow-hidden flex-col">
         <div class="mb-3 w-1/2 flex items-center justify-center flex-col p-6 bg-white shadow-xl rounded-lg animate__animated animate__fadeInUp">
-            <h1 class="text-xl text-gray-850 hover:text-gray-500">page7</h1>
-            <p class="text-gray-800">※間違えるとスタートページに戻ります</p>
+            <h1 class="mb-3 text-xl text-gray-850 hover:text-gray-500">Choose three that don't exist</h1>
+            <p class="mb-12 text-gray-800">※間違えるとスタートページに戻ります</p>
+            <div class="flex gap-4 mb-12">
+                <div class="flex items-center justify-center flex-col">
+                    <div class="sainome1 mb-3"></div>
+                    <input id="sainome1" type="checkbox">
+                </div>
+                <div class="flex items-center justify-center flex-col">
+                    <div class="sainome2 mb-3"></div>
+                    <input id="sainome2" type="checkbox">
+                </div>
+                <div class="flex items-center justify-center flex-col">
+                    <div class="sainome3 mb-3"></div>
+                    <input id="sainome3" type="checkbox">
+                </div>
+                <div class="flex items-center justify-center flex-col">
+                    <div class="sainome4 mb-3"></div>
+                    <input id="sainome4" type="checkbox">
+                </div>
+                <div class="flex items-center justify-center flex-col">
+                    <div class="sainome5 mb-3"></div>
+                    <input id="sainome5" type="checkbox">
+                </div>
+                <div class="flex items-center justify-center flex-col">
+                    <div class="sainome6 mb-3"></div>
+                    <input id="sainome6" type="checkbox">
+                </div>
+            </div>
+            <button onclick="p7Check()" class="mb-3 bg-indigo-800 text-white p-2 rounded-lg hover:bg-indigo-500">Confirm</button>
         </div>
         <div class="w-1/3 animate__animated flex flex-col justify-center items-center animate__delay-1s animate__fadeInUp">
             <a href="cItAGeY1eT.html" class="text-gray-500 hover:text-gray-300">back</a>
@@ -30,6 +127,65 @@
                 }, 1000);
             });
         });
+        function p7Check() {
+            const sainome = [
+                document.getElementById("sainome1").checked,
+                document.getElementById("sainome2").checked,
+                document.getElementById("sainome3").checked,
+                document.getElementById("sainome4").checked,
+                document.getElementById("sainome5").checked,
+                document.getElementById("sainome6").checked,
+            ];
+            const answer = [false, true, false, true, false, true];
+            console.log(sainome);
+            Swal.fire({
+                title: "確認中...",
+                html: "残り <b></b> ms.",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 73);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                if(sainome.toString() === answer.toString()) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "正解",
+                        html: "<p>おめでとう</p>",
+                    }).then((result) => {
+                        document.body.classList.add("animate__animated", "animate__fadeOut");
+                        setTimeout(() => {
+                            window.location.href = "fAOAm5TMSF.html";
+                        }, 1000);
+                    });
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "不正解",
+                        html: "<p>思い出してみよう</p>",
+                    }).then((result) => {
+                        document.body.classList.add("animate__animated", "animate__fadeOut");
+                        setTimeout(() => {
+                            window.location.href = "./";
+                        }, 1000);
+                    });
+                }
+            });
+        }
+        function toNextPage() {
+            document.body.classList.add("animate__animated", "animate__fadeOut");
+            setTimeout(() => {
+                window.location.href = "fAOAm5TMSF.html";
+            }, 1000);
+        }
     </script>
 </body>
 </html>
