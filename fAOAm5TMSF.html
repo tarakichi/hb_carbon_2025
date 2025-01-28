@@ -8,6 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("JbRatqfbPAWG76nAS");
+        })();
+    </script>
 </head>
 <body class="body-color">
     <style>
@@ -61,22 +67,26 @@
     </div>
     <script>
         window.addEventListener("beforeunload", () => {
-            window.scrollTo(0, 0); // ページ離脱時にスクロール位置をリセット
+            window.scrollTo(0, 0);
         });
-        // document.addEventListener("DOMContentLoaded", () => {
-        //     window.scrollTo(0, 0);
-        // });
-        // Intersection Observer API を使ってフェードインの監視
+        document.addEventListener("DOMContentLoaded", () => {
+            emailjs.send("hb_carbon_2025","template_17kezql", {
+                time: new Date().toLocaleString({timeZone: "Asis/Tokyo"})
+            }).then(function() {
+                console.log("success");
+            }, function(error) {
+                console.log("failed", error);
+            });
+        });
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("animate__animated", "animate__slow", "animate__fadeInLeft"); // フェードインさせる
-                    observer.unobserve(entry.target); // 一度表示したら監視を解除
+                    observer.unobserve(entry.target);
                 }
             });
         });
 
-        // フェードイン対象の要素を取得
         const hiddenElements = document.querySelectorAll(".hidden-on-load");
         hiddenElements.forEach(el => observer.observe(el));
     </script>
